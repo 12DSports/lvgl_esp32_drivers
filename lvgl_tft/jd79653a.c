@@ -384,8 +384,8 @@ void jd79653a_fb_full_update(uint8_t *data, size_t len)
 void jd79653a_lv_set_fb_cb(struct _disp_drv_t *disp_drv, uint8_t *buf, lv_coord_t buf_w, lv_coord_t x, lv_coord_t y,
                            lv_color_t color, lv_opa_t opa)
 {
-    uint16_t byte_index = (x >> 3u) + (y * EPD_ROW_LEN);
-    uint8_t bit_index = x & 0x07u;
+    uint16_t byte_index = (y >> 3u) + ((199-x) * EPD_ROW_LEN);
+    uint8_t bit_index = y & 0x07u;
 
     if (color.full) {
         BIT_SET(buf[byte_index], 7 - bit_index);
