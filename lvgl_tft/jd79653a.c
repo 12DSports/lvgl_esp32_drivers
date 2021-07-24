@@ -121,9 +121,9 @@ static const uint8_t lut_bb1[] = {
 
 
 static const jd79653a_seq_t init_seq[] = {
-#if defined (CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
+#if defined (CONFIG_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
         {0x00, {0xd3, 0x0e},       2},                 // Panel settings
-#elif defined(CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT)
+#elif defined(CONFIG_DISPLAY_ORIENTATION_PORTRAIT)
         {0x00, {0xdf, 0x0e}, 2},                 // Panel settings
 #else
 #error "Unsupported orientation - only portrait modes are supported for now"
@@ -244,9 +244,9 @@ static void jd79653a_partial_in()
     ESP_LOGD(TAG, "Partial in!");
 
     // Panel setting: accept LUT from registers instead of OTP
-#if defined (CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
+#if defined (CONFIG_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
     uint8_t pst_use_reg_lut[] = { 0xf3, 0x0e };
-#elif defined(CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT)
+#elif defined(CONFIG_DISPLAY_ORIENTATION_PORTRAIT)
     uint8_t pst_use_reg_lut[] = { 0xff, 0x0e };
 #else
 #error "Unsupported orientation - only portrait modes are supported for now"
@@ -271,9 +271,9 @@ static void jd79653a_partial_out()
     ESP_LOGD(TAG, "Partial out!");
 
     // Panel setting: use LUT from OTP
-#if defined (CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
+#if defined (CONFIG_DISPLAY_ORIENTATION_PORTRAIT_INVERTED)
     uint8_t pst_use_otp_lut[] = { 0xd3, 0x0e };
-#elif defined(CONFIG_LV_DISPLAY_ORIENTATION_PORTRAIT)
+#elif defined(CONFIG_DISPLAY_ORIENTATION_PORTRAIT)
     uint8_t pst_use_otp_lut[] = { 0xdf, 0x0e };
 #else
 #error "Unsupported orientation - only portrait modes are supported for now"
