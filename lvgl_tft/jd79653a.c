@@ -176,13 +176,6 @@ static void jd79653a_spi_send_data(uint8_t *data, size_t len)
     disp_spi_send_data(data, len);
 }
 
-static void jd79653a_spi_send_fb(uint8_t *data, size_t len)
-{
-    disp_wait_for_pending_transactions();
-    gpio_set_level(PIN_DC, 1);   // DC = 1 for data
-    disp_spi_send_colors(data, len);
-}
-
 static void jd79653a_spi_send_seq(const jd79653a_seq_t *seq, size_t len)
 {
     ESP_LOGD(TAG, "Writing cmd/data sequence, count %u", len);
